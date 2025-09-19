@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn JavaScript basics to add interactivity to websites. This beginner-friendly tutorial from Midway Learning covers variables, functions, DOM manipulation, and more with practical examples.">
+  <meta name="keywords" content="javascript basics, web development, interactive websites, dom manipulation, beginner coding, midway learning, javascript tutorial">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Introduction to JavaScript - Midway Learning</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  <header>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../webdev.html" class="active" aria-current="page">Web Development</a>
+      <a href="../android.html">Android Development</a>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h2>Introduction to JavaScript: Adding Interactivity to Your Websites</h2>
+        <p class="meta">Published: September 1, 2025 | 12 min read</p>
+        <p>JavaScript is the programming language that brings websites to life, enabling interactivity like buttons, forms, and dynamic content. Often called the "language of the web," it runs in every modern browser and powers frameworks like React, Vue, and Angular. In this beginner-friendly tutorial, we’ll cover JavaScript basics—variables, functions, DOM manipulation, and events—with practical examples to help you start building interactive web pages.</p>
+      </header>
+
+      <section class="post-section" aria-label="Why Learn JavaScript">
+        <h3>Why Learn JavaScript?</h3>
+        <p>JavaScript is essential for modern web development. It allows you to create engaging user experiences, from simple alerts to complex web applications. Key reasons to learn JavaScript include:</p>
+        <ul>
+          <li><strong>Universal Support:</strong> Runs natively in all browsers without installation.</li>
+          <li><strong>Interactivity:</strong> Adds dynamic features like form validation, animations, and real-time updates.</li>
+          <li><strong>Versatility:</strong> Used in front-end (React, Vue), back-end (Node.js), and mobile apps (React Native).</li>
+          <li><strong>Community & Tools:</strong> Huge ecosystem with libraries, frameworks, and resources.</li>
+        </ul>
+        <p>This tutorial assumes basic HTML/CSS knowledge (see our <a href="../posts/html-css-basics.html">HTML & CSS tutorial</a>). Let’s dive in!</p>
+        <!-- <img src="javascript-example.png" alt="Example of a JavaScript-powered interactive webpage" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Setting Up Your Environment">
+        <h3>Step 1: Set Up Your Environment</h3>
+        <p>You need only a text editor and a browser to start coding JavaScript:</p>
+        <ul>
+          <li><strong>Text Editor:</strong> Visual Studio Code (free, with JavaScript extensions like ESLint).</li>
+          <li><strong>Browser:</strong> Chrome or Firefox (use Developer Tools, F12, for debugging).</li>
+          <li><strong>Optional:</strong> Live Server extension for VS Code to preview changes instantly.</li>
+        </ul>
+<p>Create a folder (e.g., <code>my-js-project</code>) with an <code>index.html</code> file. Add JavaScript inside a &lt;script&gt; tag or in a separate <code>.js</code> file linked with &lt;script src="script.js"&gt;&lt;/script&gt;.</p>
+      </section>
+
+      <section class="post-section" aria-label="Basic JavaScript Syntax">
+        <h3>Step 2: Understand Basic JavaScript Syntax</h3>
+        <p>JavaScript uses variables, functions, and events to interact with webpages. Here’s a simple example to display an alert when a button is clicked:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;JavaScript Demo&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;button onclick="sayHello()"&gt;Click Me!&lt;/button&gt;
+  &lt;script&gt;
+    function sayHello() {
+      alert("Hello, World!");
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        <p>Save as `index.html`, open in a browser, and click the button to see the alert. The `onclick` event triggers the `sayHello` function.</p>
+        <p><strong>Key Concepts:</strong></p>
+        <ul>
+          <li><strong>Variables:</strong> Store data using `let`, `const`, or `var` (e.g., `let name = "Midway"`).</li>
+          <li><strong>Functions:</strong> Reusable code blocks (e.g., `function sayHello() { ... }`).</li>
+          <li><strong>Events:</strong> Actions like clicks or keypresses that trigger JavaScript code.</li>
+        </ul>
+        <!-- <img src="js-alert-example.png" alt="Browser showing JavaScript alert from button click" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="DOM Manipulation">
+        <h3>Step 3: Manipulate the DOM</h3>
+        <p>The Document Object Model (DOM) lets JavaScript interact with HTML elements. Below is an example that changes text when a button is clicked:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;DOM Demo&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 id="greeting"&gt;Hello, World!&lt;/h1&gt;
+  &lt;button onclick="changeText()"&gt;Change Text&lt;/button&gt;
+  &lt;script&gt;
+    function changeText() {
+      const element = document.getElementById("greeting");
+      element.textContent = "Welcome to Midway Learning!";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        <p>This code selects the (h2) element by its ID and updates its text. Use Chrome DevTools (F12) to inspect the DOM and debug.</p>
+        <p><em>Tip:</em> Use `querySelector` for more flexible element selection (e.g., `document.querySelector(".class")`).</p>
+        <!-- <img src="js-dom-example.png" alt="Browser showing updated text after JavaScript DOM manipulation" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Working with Events">
+        <h3>Step 4: Handle Events Properly</h3>
+        <p>Using `onclick` in HTML is basic but not ideal. A better approach is adding event listeners in JavaScript:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Event Listener Demo&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;button id="myButton"&gt;Click Me!&lt;/button&gt;
+  &lt;p id="output"&gt;Waiting for click...&lt;/p&gt;
+  &lt;script&gt;
+    const button = document.getElementById("myButton");
+    const output = document.getElementById("output");
+    button.addEventListener("click", () => {
+      output.textContent = "Button clicked! Welcome to Midway Learning!";
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        <p>This code uses `addEventListener` for cleaner, more maintainable code. Try adding other events like `mouseover` or `input` for forms.</p>
+      </section>
+
+      <section class="post-section" aria-label="Best Practices">
+        <h3>Best Practices for JavaScript</h3>
+        <ul>
+          <li><strong>Use Modern Syntax:</strong> Prefer `let`/`const` over `var` for better scoping.</li>
+          <li><strong>Separate JavaScript:</strong> Move code to a `.js` file for maintainability.</li>
+          <li><strong>Ensure Accessibility:</strong> Use ARIA attributes (e.g., `aria-live`) for dynamic content.</li>
+          <li><strong>Debug Effectively:</strong> Use `console.log` and browser DevTools to troubleshoot.</li>
+          <li><strong>Optimize Performance:</strong> Avoid excessive DOM manipulation; debounce rapid events.</li>
+        </ul>
+        <p>Test your code with Lighthouse (Chrome DevTools) for performance and accessibility.</p>
+      </section>
+
+      <section class="post-section" aria-label="Troubleshooting">
+        <h3>Troubleshooting Common Issues</h3>
+        <ul>
+          <li><strong>Script Not Running:</strong> Ensure &lt;script&gt; is after HTML or use <code>defer</code> (e.g., &lt;script defer src="script.js"&gt;).</li>
+          <li><strong>Element Not Found:</strong> Check IDs/classes; ensure JavaScript runs after DOM loads.</li>
+          <li><strong>Errors in Console:</strong> Open DevTools (F12) to view and fix errors.</li>
+        </ul>
+        <p>Visit forums like Stack Overflow or <a href="../contact.html">contact us</a> for help.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>Congratulations! You’ve learned JavaScript basics to add interactivity to webpages. Practice by building a simple counter or form validator. Explore our <a href="../webdev.html">Web Development</a> tutorials, like <a href="../posts/responsive-design.html">Responsive Web Design</a> or <a href="../posts/react-basics.html">React Basics</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/responsive-design.html" class="cta-button">Next: Learn Responsive Design</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+  </footer>
+</body>
+</html>

@@ -3,50 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Getting Started with HTML & CSS</title>
+  <meta name="description" content="Learn HTML and CSS basics to build your first webpage. This beginner-friendly tutorial from Midway Learning covers structure, styling, and responsive design with practical examples.">
+  <meta name="keywords" content="html basics, css basics, web development, beginner web design, responsive design, midway learning, coding tutorial">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Getting Started with HTML & CSS - Midway Learning</title>
   <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
   <header>
-    <h1>My Dev Blog</h1>
-    <nav>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
       <a href="../index.html">Home</a>
-      <a href="../webdev.html">Web Dev</a>
-      <a href="../android.html">Android</a>
-      <a href="../about.html">About</a>
+      <a href="../webdev.html" class="active" aria-current="page">Web Development</a>
+      <a href="../android.html">Android Development</a>
+      <a href="../about.html">About Us</a>
       <a href="../contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <h2>Getting Started with HTML & CSS</h2>
-    <p>HTML (HyperText Markup Language) is the backbone of web pages. CSS (Cascading Style Sheets) makes them beautiful.</p>
-    <h3>Basic HTML Structure</h3>
-    <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello World&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-    </pre>
+    <article class="post">
+      <header class="post-header">
+        <h2>Getting Started with HTML & CSS: Build Your First Webpage</h2>
+        <p class="meta">Published: September 10, 2025 | 10 min read</p>
+        <p>HTML (HyperText Markup Language) is the backbone of every webpage, defining its structure, while CSS (Cascading Style Sheets) adds style and visual appeal. In this beginner-friendly tutorial, we’ll guide you through creating your first webpage using HTML and CSS. You’ll learn the basic structure, essential elements, styling techniques, and responsive design principles. No prior experience needed—just a text editor and enthusiasm!</p>
+      </header>
 
-    <h3>Styling with CSS</h3>
-    <p>You can style HTML with CSS. Example:</p>
-    <pre>
-body {
-  background: lightblue;
-  font-family: Arial, sans-serif;
+      <section class="post-section" aria-label="Introduction to HTML and CSS">
+        <h3>Why Learn HTML & CSS?</h3>
+        <p>HTML and CSS are the foundation of web development. HTML organizes content (text, images, links), while CSS controls layout, colors, and fonts. Together, they enable you to create static websites that look great on any device. This tutorial is perfect for students, hobbyists, or anyone starting their web development journey.</p>
+        <p><strong>What You’ll Learn:</strong></p>
+        <ul>
+          <li>Creating a basic HTML structure.</li>
+          <li>Styling webpages with CSS.</li>
+          <li>Making your site responsive for mobile devices.</li>
+          <li>Best practices for clean, accessible code.</li>
+        </ul>
+        <!-- <img src="html-css-example.png" alt="Preview of a simple webpage styled with HTML and CSS" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Setting Up Your Environment">
+        <h3>Step 1: Set Up Your Environment</h3>
+        <p>You don’t need fancy tools to start—just a text editor and a browser. Recommended tools:</p>
+        <ul>
+          <li><strong>Text Editor:</strong> Visual Studio Code (free, with HTML/CSS extensions).</li>
+          <li><strong>Browser:</strong> Google Chrome or Firefox (use Developer Tools to inspect elements).</li>
+          <li><strong>Optional:</strong> Live Server extension for VS Code to preview changes instantly.</li>
+        </ul>
+        <p>Create a folder (e.g., `my-first-webpage`) with two files: `index.html` and `style.css`. Link them in HTML with `<link rel="stylesheet" href="style.css">`.</p>
+      </section>
+
+      <section class="post-section" aria-label="Basic HTML Structure">
+        <h3>Step 2: Create the HTML Structure</h3>
+        <p>HTML uses tags to define content. Below is a basic webpage structure:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;My First Webpage&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Welcome to My Webpage&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;About Me&lt;/h2&gt;
+      &lt;p&gt;Hi, I’m learning web development with Midway Learning!&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Contact&lt;/h2&gt;
+      &lt;p&gt;Reach me at &lt;a href="mailto:example@email.com"&gt;example@email.com&lt;/a&gt;.&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;© 2025 My Webpage&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        <p><strong>Key Elements:</strong></p>
+        <ul>
+          <li>`<!DOCTYPE html>`: Declares the document as HTML5.</li>
+          <li>`<html lang="en">`: Sets the language to English.</li>
+          <li>`<meta>` tags: Ensure proper character encoding and responsiveness.</li>
+          <li>`<header>`, `<main>`, `<section>`, `<footer>`: Semantic tags for better structure and accessibility.</li>
+        </ul>
+        <p>Save this as `index.html` and open it in a browser to see a basic webpage.</p>
+        <!-- <img src="html-structure-preview.png" alt="Browser preview of basic HTML webpage structure" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Styling with CSS">
+        <h3>Step 3: Style Your Webpage with CSS</h3>
+        <p>CSS makes your webpage visually appealing. Create `style.css` and add the following styles:</p>
+        <pre><code class="language-css">body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  background: #f4f4f9;
+  color: #333;
 }
-    </pre>
-    <p>With HTML and CSS, you can already create beautiful static websites!</p>
+
+header {
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #00aaff;
+}
+
+a {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1a1a1a;
+  color: #fff;
+}
+</code></pre>
+        <p>This CSS sets a clean layout with a dark header/footer, a centered content area, and a modern color scheme. Save and refresh your browser to see the changes.</p>
+        <p><em>Tip:</em> Use Google Fonts to include `'Roboto'` by adding `<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">` to your HTML `<head>`.</p>
+        <!-- <img src="css-styled-page.png" alt="Preview of HTML webpage styled with CSS" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Responsive Design">
+        <h3>Step 4: Make Your Webpage Responsive</h3>
+        <p>Ensure your webpage looks good on all devices using CSS media queries:</p>
+        <pre><code class="language-css">@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+</code></pre>
+        <p>Add this to `style.css`. It adjusts font sizes and margins for tablets and phones. Test by resizing your browser or using Chrome’s Developer Tools (F12 > Toggle Device Toolbar).</p>
+      </section>
+
+      <section class="post-section" aria-label="Best Practices">
+        <h3>Best Practices for HTML & CSS</h3>
+        <ul>
+          <li><strong>Use Semantic HTML:</strong> Tags like `<header>`, `<main>`, and `<footer>` improve accessibility and SEO.</li>
+          <li><strong>Keep CSS DRY:</strong> Reuse styles with classes to avoid repetition.</li>
+          <li><strong>Ensure Accessibility:</strong> Use alt text for images, sufficient color contrast, and ARIA attributes (e.g., `aria-label`).</li>
+          <li><strong>Validate Code:</strong> Use W3C validators for HTML and CSS to catch errors.</li>
+          <li><strong>Optimize Performance:</strong> Minify CSS and use compressed images.</li>
+        </ul>
+        <p>Test your site with tools like Lighthouse (in Chrome DevTools) to check accessibility and performance.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>Congratulations! You’ve built and styled your first webpage with HTML and CSS. Practice by adding more elements like images or navigation menus. Explore our <a href="../webdev.html">Web Development</a> tutorials for next steps, such as <a href="../posts/javascript-intro.html">Introduction to JavaScript</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/javascript-intro.html" class="cta-button">Next: Learn JavaScript Basics</a>
+      </section>
+    </article>
   </main>
 
   <footer>
-    <p>© 2025 My Dev Blog</p>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
   </footer>
 </body>
 </html>

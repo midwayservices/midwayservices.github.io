@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn Android UI Design Principles using Material Design and Jetpack Compose. Create intuitive, responsive layouts with XML and Kotlin. Beginner-friendly tutorial from Midway Learning.">
+  <meta name="keywords" content="android ui design, material design, jetpack compose, xml layouts, kotlin, android development, mobile ui, midway learning">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Android UI Design Principles - Midway Learning</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  <header>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../webdev.html">Web Development</a>
+      <a href="../android.html" class="active" aria-current="page">Android Development</a>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h2>Android UI Design Principles: Crafting User-Friendly Interfaces</h2>
+        <p class="meta">Published: August 15, 2025 | 12 min read</p>
+        <p>A great user interface (UI) is the heart of any successful Android app. It ensures users can navigate intuitively and enjoy a seamless experience. In this tutorial, we’ll explore Android UI design principles, focusing on Google’s <strong>Material Design</strong> guidelines and modern tools like Jetpack Compose, alongside traditional XML layouts. Perfect for beginners, this guide covers creating responsive, visually appealing UIs with practical examples and best practices.</p>
+      </header>
+
+      <section class="post-section" aria-label="Introduction to Android UI Design">
+        <h3>Why UI Design Matters</h3>
+        <p>A well-designed UI enhances user satisfaction, improves accessibility, and increases engagement. Android’s Material Design provides a unified framework for creating consistent, intuitive interfaces across devices. With the rise of Jetpack Compose, Android’s modern UI toolkit, developers can build dynamic layouts with less code. This tutorial covers both XML (traditional) and Compose approaches to suit all learners.</p>
+        <p><strong>Key Goals:</strong></p>
+        <ul>
+          <li>Create layouts that adapt to different screen sizes.</li>
+          <li>Follow Material Design for consistency and aesthetics.</li>
+          <li>Ensure accessibility for diverse users.</li>
+        </ul>
+      </section>
+
+      <section class="post-section" aria-label="Material Design Guidelines">
+        <h3>Material Design Guidelines</h3>
+        <p>Material Design is Google’s design system for creating visually appealing, functional apps. It emphasizes:</p>
+        <ul>
+          <li><strong>Material Surfaces:</strong> Use elevation, shadows, and cards to create depth.</li>
+          <li><strong>Typography:</strong> Use legible fonts (e.g., Roboto) with clear hierarchy.</li>
+          <li><strong>Color:</strong> Apply primary, secondary, and accent colors consistently.</li>
+          <li><strong>Motion:</strong> Use animations for smooth transitions (e.g., button ripples).</li>
+          <li><strong>Components:</strong> Leverage pre-built widgets like buttons, text fields, and navigation bars.</li>
+        </ul>
+        <p>Visit <a href="https://m3.material.io/" target="_blank" rel="noopener">Material Design 3</a> for the latest guidelines (2025 standards).</p>
+        <!-- <img src="material-design-example.png" alt="Example of Material Design components in an Android app" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="XML Layout Example">
+        <h3>Creating a UI with XML Layouts</h3>
+        <p>XML layouts are the traditional way to define Android UIs. They’re declarative, stored in the `res/layout` folder, and used with View-based components. Below is an example of a simple login screen using a LinearLayout.</p>
+        <pre><code class="language-xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F4F4F9"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Midway Learning"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp"/&gt;
+
+    &lt;EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:inputType="text"
+        android:backgroundTint="#00AAFF"/&gt;
+
+    &lt;EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:backgroundTint="#00AAFF"
+        android:layout_marginTop="8dp"/&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        style="@style/Widget.Material3.Button"/&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+        <p>This layout creates a centered title, two input fields, and a Material Design button. Save it as `res/layout/activity_main.xml` and set it in your `MainActivity` with `setContentView(R.layout.activity_main)`.</p>
+        <!-- <img src="xml-layout-example.png" alt="Preview of XML login layout in Android Studio" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Jetpack Compose Example">
+        <h3>Building UI with Jetpack Compose</h3>
+        <p>Jetpack Compose is Android’s modern toolkit for building UIs with Kotlin, offering a declarative approach that’s faster and more flexible than XML. Below is the same login screen in Compose.</p>
+        <pre><code class="language-kotlin">package com.example.midwaylearning
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextAlign
+import com.example.midwaylearning.ui.theme.MidwayLearningTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MidwayLearningTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    LoginScreen()
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun LoginScreen() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Text(
+            text = "Welcome to Midway Learning",
+            style = MaterialTheme.typography.headlineMedium,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            label = { Text("Username") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        OutlinedTextField(
+            value = "",
+            onValueChange = {},
+            label = { Text("Password") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Button(
+            onClick = { /* Handle login */ },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text("Login")
+        }
+    }
+}
+</code></pre>
+        <p>This code creates a responsive login UI with Material Design components. Add `implementation "androidx.compose.material3:material3:1.3.0"` to your `build.gradle` for Material 3 support.</p>
+        <!-- <img src="compose-login-example.png" alt="Preview of Jetpack Compose login screen in Android Studio" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Best Practices">
+        <h3>Best Practices for Android UI Design</h3>
+        <p>To create effective Android UIs, follow these principles:</p>
+        <ul>
+          <li><strong>Adopt Material Design:</strong> Use Material 3 components for consistency across Android devices.</li>
+          <li><strong>Simplify Layouts:</strong> Avoid nested layouts in XML; use ConstraintLayout or Compose for efficiency.</li>
+          <li><strong>Responsive Design:</strong> Test on multiple screen sizes (phones, tablets) using Android Studio’s Layout Editor or Preview.</li>
+          <li><strong>Accessibility:</strong> Add content descriptions (e.g., `android:contentDescription`) for screen readers and ensure high contrast.</li>
+          <li><strong>Performance:</strong> Optimize images and avoid overdraw for smooth rendering.</li>
+          <li><strong>Dark Mode:</strong> Support dark themes using Material Design or Compose’s theming.</li>
+        </ul>
+        <p>Use tools like Android Studio’s Layout Inspector to debug UI issues and ensure responsiveness.</p>
+      </section>
+
+      <section class="post-section" aria-label="Testing UI">
+        <h3>Testing Your UI</h3>
+        <p>Test your UI across devices to ensure compatibility:</p>
+        <ol>
+          <li><strong>Emulator:</strong> Use Android Virtual Devices (AVDs) with different screen sizes (e.g., Pixel 4, Tablet).</li>
+          <li><strong>Physical Devices:</strong> Test on real phones via USB debugging.</li>
+          <li><strong>Accessibility Scanner:</strong> Run Android’s Accessibility Scanner to check for issues like missing labels.</li>
+          <li><strong>Responsive Testing:</strong> Use Android Studio’s Layout Editor to preview layouts on various resolutions.</li>
+        </ol>
+        <p><em>Tip:</em> Test in both light and dark modes to ensure readability.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>You’ve learned the essentials of Android UI design using Material Design, XML layouts, and Jetpack Compose. Practice by building a simple app with buttons, inputs, and navigation. For more advanced topics, explore our <a href="../android.html">Android Development</a> tutorials, such as <a href="../posts/firebase-android.html">Integrating Firebase</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/kotlin-basics.html" class="cta-button">Next: Learn Kotlin Basics</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
+  </footer>
+</body>
+</html>

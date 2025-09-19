@@ -3,45 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Dev Blog</title>
+  <meta name="description" content="Midway Learning: Tutorials and notes on Web Development and Android Development for students and beginners. Learn HTML, CSS, JavaScript, React, Kotlin, and more.">
+  <meta name="keywords" content="web development, android development, programming tutorials, HTML, CSS, JavaScript, React, Kotlin, beginner coding">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Midway Learning - Web & Android Development Tutorials</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
   <header>
-    <h1>My Dev Blog</h1>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="webdev.html">Web Dev</a>
-      <a href="android.html">Android</a>
-      <a href="about.html">About</a>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="webdev.html">Web Development</a>
+      <a href="android.html">Android Development</a>
+      <a href="about.html">About Us</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <h2>Welcome 🚀</h2>
-    <p>This blog shares tutorials and notes on <b>Web Development</b> and <b>Android Development</b>. Perfect for students and beginners.</p>
+    <section class="hero">
+      <h2>Welcome to Midway Learning 🚀</h2>
+      <p>Midway Learning is your go-to resource for beginner-friendly tutorials and notes on <strong>Web Development</strong> and <strong>Android Development</strong>. Whether you're a student, a career switcher, or a curious coder, our in-depth guides will help you build skills in HTML, CSS, JavaScript, React, Kotlin, and more.</p>
+      <a href="#featured" class="cta-button">Explore Tutorials</a>
+    </section>
 
-    <section class="articles">
+    <section id="featured" class="articles" aria-label="Featured tutorials">
+      <h2>Featured Tutorials</h2>
       <article>
         <h3><a href="posts/html-css-basics.html">Getting Started with HTML & CSS</a></h3>
-        <p>A beginner-friendly guide to building your first webpage...</p>
+        <p>Learn the fundamentals of web development by building your first webpage with HTML and styling it with CSS. This step-by-step guide covers structure, semantics, and basic styling techniques.</p>
+        <p class="meta">Published: September 10, 2025 | 5 min read</p>
       </article>
 
       <article>
         <h3><a href="posts/android-first-app.html">Build Your First Android App</a></h3>
-        <p>Install Android Studio and run your first Hello World app...</p>
+        <p>Get started with Android development by installing Android Studio and creating a Hello World app. This tutorial walks you through setup, project structure, and running your app on an emulator.</p>
+        <p class="meta">Published: September 5, 2025 | 7 min read</p>
       </article>
 
       <article>
-        <h3><a href="posts/react-basics.html">React Basics</a></h3>
-        <p>Learn how to create interactive web apps with React...</p>
+        <h3><a href="posts/react-basics.html">React Basics for Beginners</a></h3>
+        <p>Discover how to create dynamic and interactive web applications using React. This guide introduces components, state, and props with practical examples.</p>
+        <p class="meta">Published: August 30, 2025 | 6 min read</p>
       </article>
+
+      <article>
+        <h3><a href="posts/kotlin-basics.html">Introduction to Kotlin for Android</a></h3>
+        <p>Dive into Kotlin, the modern programming language for Android development. Learn variables, functions, and basic syntax to kickstart your Android journey.</p>
+        <p class="meta">Published: August 25, 2025 | 4 min read</p>
+      </article>
+    </section>
+
+    <section class="categories" aria-label="Browse by category">
+      <h2>Explore by Category</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <h3><a href="webdev.html">Web Development</a></h3>
+          <p>Master HTML, CSS, JavaScript, and frameworks like React to build stunning websites.</p>
+        </div>
+        <div class="category-card">
+          <h3><a href="android.html">Android Development</a></h3>
+          <p>Learn Android Studio, Kotlin, and Firebase to create powerful mobile apps.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-preview" aria-label="About Midway Learning">
+      <h2>Why Midway Learning?</h2>
+      <p>At Midway Learning, we believe in making tech education accessible and engaging. Our tutorials are crafted with clarity and include practical examples to help you learn by doing. <a href="about.html">Learn more about our mission</a>.</p>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 My Dev Blog | <a href="privacy.html">Privacy Policy</a></p>
+    <p>© 2025 Midway Learning | <a href="privacy.html">Privacy Policy</a> | <a href="contact.html">Contact Us</a></p>
+
   </footer>
 </body>
 </html>

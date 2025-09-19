@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to integrate Firebase in your Android app for authentication, real-time database, and push notifications using Kotlin. Step-by-step tutorial for beginners from Midway Learning.">
+  <meta name="keywords" content="firebase android, android authentication, real-time database, push notifications, kotlin, android development, midway learning">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Integrating Firebase in Android - Midway Learning</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  <header>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../webdev.html">Web Development</a>
+      <a href="../android.html" class="active" aria-current="page">Android Development</a>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h2>Integrating Firebase in Android: Authentication, Database, and Notifications</h2>
+        <p class="meta">Published: August 10, 2025 | 12 min read</p>
+        <p>Firebase is Google’s powerful platform for building scalable Android apps with backend services like authentication, real-time database, and push notifications. In this beginner-friendly tutorial, we’ll guide you through integrating Firebase into your Android app using Kotlin. You’ll learn to set up Firebase, add email authentication, store data in Firestore, and send push notifications. Perfect for students and new developers!</p>
+      </header>
+
+      <section class="post-section" aria-label="Introduction to Firebase">
+        <h3>Why Use Firebase?</h3>
+        <p>Firebase simplifies backend development by offering ready-to-use services, saving you from building servers from scratch. Key features include:</p>
+        <ul>
+          <li><strong>Authentication:</strong> Support for email, Google, anonymous logins, and more.</li>
+          <li><strong>Firestore:</strong> A scalable NoSQL database for real-time data syncing.</li>
+          <li><strong>Cloud Messaging:</strong> Send push notifications to engage users.</li>
+          <li><strong>Analytics:</strong> Track user behavior to improve your app.</li>
+        </ul>
+        <p>This tutorial focuses on authentication and Firestore, with a brief look at push notifications. Let’s get started!</p>
+        <!-- <img src="firebase-console-overview.png" alt="Firebase Console dashboard overview" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Setting Up Firebase">
+        <h3>Step 1: Set Up Firebase in Your Project</h3>
+        <p>Follow these steps to connect your Android app to Firebase:</p>
+        <ol>
+          <li><strong>Create a Firebase Project:</strong> Go to <a href="https://console.firebase.google.com/" target="_blank" rel="noopener">Firebase Console</a> and click "Add Project." Name it (e.g., "MidwayLearningApp") and enable Google Analytics (optional).</li>
+          <li><strong>Add Your Android App:</strong> In the Firebase Console, click "Add App" > Android. Enter your app’s package name (e.g., `com.example.midwaylearning`), app nickname, and SHA-1 key (optional, for authentication). Download the `google-services.json` file.</li>
+          <li><strong>Place Configuration File:</strong> Move `google-services.json` to your project’s `app/` directory in Android Studio.</li>
+          <li><strong>Add Firebase Dependencies:</strong> Update your Gradle files:
+            <ul>
+              <li>In `build.gradle` (project-level):
+                <pre><code class="language-gradle">buildscript {
+  dependencies {
+    classpath 'com.google.gms:google-services:4.4.2' // Check for latest version
+  }
+}
+</code></pre>
+              </li>
+              <li>In `build.gradle` (app-level):
+                <pre><code class="language-gradle">plugins {
+  id 'com.android.application'
+  id 'kotlin-android'
+  id 'com.google.gms.google-services'
+}
+
+dependencies {
+  implementation 'com.google.firebase:firebase-auth:23.0.0'
+  implementation 'com.google.firebase:firebase-firestore:25.0.0'
+  implementation 'com.google.firebase:firebase-messaging:24.0.0'
+}
+</code></pre>
+              </li>
+            </ul>
+            Sync the project with Gradle (click the elephant icon).
+          </li>
+          <li><strong>Initialize Firebase:</strong> Ensure your `MainActivity` includes Firebase initialization (automatic with `google-services` plugin).</li>
+        </ol>
+        <p><em>Tip:</em> Check the Firebase Console for the latest dependency versions, as they update frequently.</p>
+        <!-- <img src="firebase-add-app.png" alt="Adding an Android app in Firebase Console" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Implementing Authentication">
+        <h3>Step 2: Add Email Authentication</h3>
+        <p>Firebase Authentication supports email/password logins. First, enable it in the Firebase Console under Authentication > Sign-in method > Email/Password. Then, add a login UI (e.g., from our <a href="../posts/android-ui-design.html">UI Design tutorial</a>) and implement login logic.</p>
+        <pre><code class="language-kotlin">package com.example.midwaylearning
+
+import android.os.Bundle
+import android.util.Log
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.google.firebase.auth.FirebaseAuth
+import com.example.midwaylearning.ui.theme.MidwayLearningTheme
+
+class MainActivity : ComponentActivity() {
+    private lateinit var auth: FirebaseAuth
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+        setContent {
+            MidwayLearningTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    LoginScreen(auth)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun LoginScreen(auth: FirebaseAuth) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var message by remember { mutableStateOf("") }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Login to Midway Learning",
+            style = MaterialTheme.typography.headlineMedium,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Email") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        Button(
+            onClick = {
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        message = if (task.isSuccessful) {
+                            "Sign-in successful!"
+                        } else {
+                            "Sign-in failed: ${task.exception?.message}"
+                        }
+                    }
+            },
+            modifier = Modifier.padding(top = 16.dp)
+        ) {
+            Text("Login")
+        }
+        Text(message, modifier = Modifier.padding(top = 8.dp))
+    }
+}
+</code></pre>
+        <p>This code creates a login UI with Jetpack Compose and handles email authentication. Test with a valid email/password after registering a user in Firebase.</p>
+        <!-- <img src="firebase-auth-login.png" alt="Firebase authentication login screen in Android app" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Using Firestore">
+        <h3>Step 3: Store Data with Firestore</h3>
+        <p>Firestore is a NoSQL database for real-time data syncing. Enable it in the Firebase Console under Firestore Database > Create Database (use Test Mode for development). Below is an example of saving user data after login.</p>
+        <pre><code class="language-kotlin">import com.google.firebase.firestore.FirebaseFirestore
+
+val db = FirebaseFirestore.getInstance()
+val user = hashMapOf(
+    "username" to "JohnDoe",
+    "email" to auth.currentUser?.email
+)
+
+db.collection("users")
+    .document(auth.currentUser?.uid ?: "unknown")
+    .set(user)
+    .addOnSuccessListener {
+        Log.d("Firestore", "User data saved")
+    }
+    .addOnFailureListener { e ->
+        Log.e("Firestore", "Error saving data: ${e.message}")
+    }
+</code></pre>
+        <p>Add this code after a successful login to store user data. Retrieve it later using `db.collection("users").get()`.</p>
+      </section>
+
+      <section class="post-section" aria-label="Push Notifications">
+        <h3>Step 4: Send Push Notifications</h3>
+        <p>Firebase Cloud Messaging (FCM) enables push notifications. Enable it in the Firebase Console and send a test notification via Cloud Messaging > Send Test Message. Add the following to handle notifications in your app:</p>
+        <pre><code class="language-kotlin">import com.google.firebase.messaging.FirebaseMessagingService
+import com.google.firebase.messaging.RemoteMessage
+
+class MyFirebaseMessagingService : FirebaseMessagingService() {
+    override fun onMessageReceived(message: RemoteMessage) {
+        super.onMessageReceived(message)
+        Log.d("FCM", "Notification: ${message.notification?.body}")
+    }
+}
+</code></pre>
+        <p>Declare the service in `AndroidManifest.xml`:</p>
+        <pre><code class="language-xml">&lt;service
+    android:name=".MyFirebaseMessagingService"
+    android:exported="false"&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name="com.google.firebase.MESSAGING_EVENT"/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+</code></pre>
+        <p>Test by sending a notification from the Firebase Console.</p>
+      </section>
+
+      <section class="post-section" aria-label="Troubleshooting">
+        <h3>Troubleshooting Common Issues</h3>
+        <ul>
+          <li><strong>Authentication Errors:</strong> Ensure Email/Password is enabled in Firebase Console.</li>
+          <li><strong>Firestore Fails:</strong> Check Firestore rules and network connectivity.</li>
+          <li><strong>Gradle Sync Issues:</strong> Verify internet connection and update to latest dependency versions.</li>
+          <li><strong>Notifications Not Received:</strong> Confirm FCM setup and device token registration.</li>
+        </ul>
+        <p>Refer to Firebase’s official documentation or <a href="../contact.html">contact us</a> for help.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>You’ve learned how to integrate Firebase for authentication, Firestore, and push notifications in your Android app. Build on this by adding features like user profiles or real-time chat. Explore our <a href="../android.html">Android Development</a> tutorials for more, like <a href="../posts/android-ui-design.html">UI Design Principles</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/kotlin-basics.html" class="cta-button">Next: Learn Kotlin Basics</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
+  </footer>
+</body>
+</html>

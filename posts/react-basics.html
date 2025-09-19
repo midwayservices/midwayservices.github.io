@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn React basics for building interactive web interfaces. This beginner-friendly tutorial from Midway Learning covers components, JSX, props, state, and more with practical examples.">
+  <meta name="keywords" content="react basics, web development, javascript library, components, jsx, props, state, midway learning, react tutorial">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>React Basics for Web Development - Midway Learning</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  <header>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../webdev.html" class="active" aria-current="page">Web Development</a>
+      <a href="../android.html">Android Development</a>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h2>React Basics: Building Interactive Web Interfaces</h2>
+        <p class="meta">Published: August 30, 2025 | 12 min read</p>
+        <p>React is a powerful JavaScript library for building user interfaces, known for its component-based architecture and efficient virtual DOM. Developed by Facebook, it’s widely used for creating dynamic web applications. In this beginner-friendly tutorial, we’ll cover React basics—components, JSX, props, and state—with practical examples to help you build your first React app.</p>
+      </header>
+
+      <section class="post-section" aria-label="Why Learn React">
+        <h3>Why Learn React?</h3>
+        <p>React simplifies web development by breaking UIs into reusable components. Its key benefits include:</p>
+        <ul>
+          <li><strong>Component-Based:</strong> Build modular, reusable UI pieces.</li>
+          <li><strong>Virtual DOM:</strong> Optimizes updates for fast performance.</li>
+          <li><strong>JSX:</strong> Write HTML-like code within JavaScript for intuitive syntax.</li>
+          <li><strong>Ecosystem:</strong> Supports tools like React Router and Redux for advanced apps.</li>
+        </ul>
+        <p>This tutorial assumes basic JavaScript knowledge (see our <a href="../posts/javascript-intro.html">Introduction to JavaScript</a>). Let’s get started!</p>
+        <!-- <img src="react-app-example.png" alt="Preview of a simple React app in the browser" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Setting Up Your Environment">
+        <h3>Step 1: Set Up Your Environment</h3>
+        <p>To start with React, you need Node.js and a code editor:</p>
+        <ul>
+          <li><strong>Node.js:</strong> Download from <a href="https://nodejs.org/" target="_blank" rel="noopener">nodejs.org</a> (LTS version, e.g., 20.x as of 2025).</li>
+          <li><strong>Code Editor:</strong> Visual Studio Code with extensions like Prettier and ESLint.</li>
+          <li><strong>Browser:</strong> Chrome or Firefox for debugging with React Developer Tools.</li>
+        </ul>
+        <p>Create a new React project using Create React App:</p>
+        <pre><code class="language-bash">npx create-react-app my-first-react-app
+cd my-first-react-app
+npm start
+</code></pre>
+        <p>This sets up a development server at `http://localhost:3000`. The project includes `src/App.js` for your main component.</p>
+      </section>
+
+      <section class="post-section" aria-label="Creating Your First Component">
+        <h3>Step 2: Create Your First React Component</h3>
+        <p>React apps are built with components—functions or classes that return UI elements. Here’s a modern "Hello World" example using React 18:</p>
+        <pre><code class="language-jsx">// src/index.js
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+
+const root = createRoot(document.getElementById('root'));
+root.render(&lt;App /&gt;);
+
+// src/App.js
+import React from 'react';
+import './App.css';
+
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Hello, React!&lt;/h1&gt;
+      &lt;p&gt;Welcome to Midway Learning's React tutorial!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+        <p>Save these files, run `npm start`, and see the output in your browser. The `createRoot` API (React 18) replaces the deprecated `ReactDOM.render`. Ensure your `index.html` has a `<div id="root"></div>` for rendering.</p>
+        <!-- <img src="react-hello-world.png" alt="Browser showing Hello React app output" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Understanding JSX">
+        <h3>Step 3: Master JSX</h3>
+        <p>JSX is a syntax extension that lets you write HTML-like code in JavaScript. It’s compiled to JavaScript by tools like Babel. Example:</p>
+        <pre><code class="language-jsx">import React from 'react';
+
+function Welcome() {
+  const name = 'Midway';
+  return (
+    &lt;section&gt;
+      &lt;h2&gt;Welcome, {name}!&lt;/h2&gt;
+      &lt;p&gt;Learn React with us!&lt;/p&gt;
+    &lt;/section&gt;
+  );
+}
+
+export default Welcome;
+</code></pre>
+        <p><strong>Key JSX Rules:</strong></p>
+        <ul>
+          <li>Return a single element (wrap multiple elements in a `<div>` or `<>`).</li>
+          <li>Use camelCase for attributes (e.g., `className` instead of `class`).</li>
+          <li>Embed JavaScript expressions in `{}`.</li>
+        </ul>
+        <p>Import this component into `App.js` to render it.</p>
+      </section>
+
+      <section class="post-section" aria-label="Props">
+        <h3>Step 4: Use Props for Dynamic Data</h3>
+        <p>Props (properties) pass data to components. Here’s an example:</p>
+        <pre><code class="language-jsx">import React from 'react';
+
+function Greeting(props) {
+  return &lt;h2&gt;Hello, {props.name}!&lt;/h2&gt;;
+}
+
+function App() {
+  return (
+    &lt;div&gt;
+      &lt;Greeting name="Midway" /&gt;
+      &lt;Greeting name="React" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+        <p>Props make components reusable. Pass data like `name` to customize output.</p>
+      </section>
+
+      <section class="post-section" aria-label="State and Hooks">
+        <h3>Step 5: Manage State with Hooks</h3>
+        <p>State allows components to manage dynamic data. Use the `useState` hook in functional components:</p>
+        <pre><code class="language-jsx">import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Counter;
+</code></pre>
+        <p>The `useState` hook declares `count` (state) and `setCount` (updater function). Clicking the button updates the state, triggering a re-render.</p>
+        <!-- <img src="react-counter-example.png" alt="Browser showing React counter component" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Best Practices">
+        <h3>Best Practices for React</h3>
+        <ul>
+          <li><strong>Keep Components Small:</strong> Break UIs into reusable components.</li>
+          <li><strong>Use Functional Components:</strong> Prefer functions with hooks over class components.</li>
+          <li><strong>Ensure Accessibility:</strong> Use ARIA attributes (e.g., `aria-label`) for interactive elements.</li>
+          <li><strong>Optimize Performance:</strong> Avoid unnecessary re-renders with `useMemo` or `useCallback`.</li>
+          <li><strong>Lint Code:</strong> Use ESLint to catch errors and enforce consistency.</li>
+        </ul>
+        <p>Test with React Developer Tools and Lighthouse for performance and accessibility.</p>
+      </section>
+
+      <section class="post-section" aria-label="Troubleshooting">
+        <h3>Troubleshooting Common Issues</h3>
+        <ul>
+          <li><strong>Component Not Rendering:</strong> Check for correct imports and `id="root"` in `index.html`.</li>
+          <li><strong>JSX Errors:</strong> Ensure single parent element and valid syntax.</li>
+          <li><strong>State Not Updating:</strong> Use `setState` correctly; avoid mutating state directly.</li>
+        </ul>
+        <p>Debug with React Developer Tools or <a href="../contact.html">contact us</a> for help.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>You’ve learned React basics—components, JSX, props, and state—to build interactive web apps. Practice by creating a to-do list or form. Explore our <a href="../webdev.html">Web Development</a> tutorials, like <a href="../posts/responsive-design.html">Responsive Web Design</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/responsive-design.html" class="cta-button">Next: Learn Responsive Design</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
+  </footer>
+</body>
+</html>

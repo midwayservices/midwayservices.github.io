@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn Kotlin basics for Android development. This beginner-friendly tutorial from Midway Learning covers variables, functions, null safety, and more with practical examples.">
+  <meta name="keywords" content="kotlin basics, android development, programming tutorial, null safety, kotlin functions, midway learning, beginner coding">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Kotlin Basics for Android Development - Midway Learning</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  <header>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../webdev.html">Web Development</a>
+      <a href="../android.html" class="active" aria-current="page">Android Development</a>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h2>Kotlin Basics: Your First Step in Android Development</h2>
+        <p class="meta">Published: August 25, 2025 | 10 min read</p>
+        <p>Kotlin is the preferred programming language for Android development, endorsed by Google for its modern, concise, and safe features. It’s interoperable with Java, beginner-friendly, and reduces common errors like null pointer exceptions. In this tutorial, we’ll cover Kotlin basics—variables, functions, control flow, and null safety—with practical examples to help you start coding Android apps.</p>
+      </header>
+
+      <section class="post-section" aria-label="Why Learn Kotlin">
+        <h3>Why Learn Kotlin?</h3>
+        <p>Kotlin simplifies Android development with its modern syntax and safety features. Key benefits include:</p>
+        <ul>
+          <li><strong>Null Safety:</strong> Prevents null pointer crashes, a common issue in Java.</li>
+          <li><strong>Concise Syntax:</strong> Reduces boilerplate code compared to Java.</li>
+          <li><strong>Interoperability:</strong> Seamlessly works with existing Java libraries and Android code.</li>
+          <li><strong>Community Support:</strong> Backed by Google and JetBrains, with a growing ecosystem.</li>
+        </ul>
+        <p>This tutorial assumes you have Android Studio installed (see our <a href="../posts/android-first-app.html">Build Your First Android App</a> tutorial). Let’s get started!</p>
+        <!-- <img src="kotlin-code-example.png" alt="Kotlin code running in Android Studio" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Setting Up Your Environment">
+        <h3>Step 1: Set Up Your Environment</h3>
+        <p>To code in Kotlin, you need:</p>
+        <ul>
+          <li><strong>Android Studio:</strong> The official IDE for Android, with built-in Kotlin support (version Koala or later, 2025).</li>
+          <li><strong>Kotlin Plugin:</strong> Included by default in Android Studio.</li>
+          <li><strong>Optional:</strong> IntelliJ IDEA (by JetBrains) for non-Android Kotlin projects.</li>
+        </ul>
+        <p>Create a new Kotlin project in Android Studio: File > New > New Project > Empty Activity, select Kotlin as the language. Alternatively, use the Kotlin Playground (<a href="https://play.kotlinlang.org/" target="_blank" rel="noopener">play.kotlinlang.org</a>) for quick experiments.</p>
+      </section>
+
+      <section class="post-section" aria-label="Basic Kotlin Syntax">
+        <h3>Step 2: Understand Basic Kotlin Syntax</h3>
+        <p>Let’s start with a simple "Hello, World" program:</p>
+        <pre><code class="language-kotlin">fun main() {
+    val name = "Android"
+    println("Hello, $name!")
+}
+</code></pre>
+        <p><strong>Key Elements:</strong></p>
+        <ul>
+          <li>`fun`: Defines a function (e.g., `main` is the entry point).</li>
+          <li>`val`: Immutable variable (cannot be reassigned).</li>
+          <li>`println`: Outputs text to the console.</li>
+          <li>`$name`: String interpolation for embedding variables.</li>
+        </ul>
+        <p>Run this in Android Studio’s Kotlin REPL (Tools > Kotlin > Kotlin REPL) or a new Kotlin file (`main.kt`). Output: `Hello, Android!`</p>
+        <!-- <img src="kotlin-repl-output.png" alt="Kotlin REPL showing Hello Android output" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Variables and Data Types">
+        <h3>Step 3: Work with Variables and Data Types</h3>
+        <p>Kotlin has two variable types: `val` (immutable) and `var` (mutable). Common data types include `String`, `Int`, `Double`, and `Boolean`.</p>
+        <pre><code class="language-kotlin">fun main() {
+    val name = "Midway Learning" // Immutable
+    var age = 25 // Mutable
+    age = 26 // OK
+    // name = "New Name" // Error: val cannot be reassigned
+
+    val score: Double = 95.5
+    val isActive: Boolean = true
+    println("User: $name, Age: $age, Score: $score, Active: $isActive")
+}
+</code></pre>
+        <p>This code declares variables and prints them. Kotlin infers types automatically, but you can specify them explicitly (e.g., `score: Double`).</p>
+      </section>
+
+      <section class="post-section" aria-label="Functions">
+        <h3>Step 4: Create Functions</h3>
+        <p>Functions in Kotlin are concise and powerful. Here’s an example with parameters and return values:</p>
+        <pre><code class="language-kotlin">fun greetUser(name: String, greeting: String = "Hello"): String {
+    return "$greeting, $name!"
+}
+
+fun main() {
+    val message = greetUser("Midway")
+    println(message) // Output: Hello, Midway!
+    println(greetUser("Android", "Welcome")) // Output: Welcome, Android!
+}
+</code></pre>
+        <p><strong>Key Features:</strong></p>
+        <ul>
+          <li>Default parameters (e.g., `greeting: String = "Hello"`).</li>
+          <li>Return type specified after the function (e.g., `: String`).</li>
+          <li>Single-expression functions can omit curly braces (e.g., `fun square(num: Int) = num * num`).</li>
+        </ul>
+      </section>
+
+      <section class="post-section" aria-label="Null Safety">
+        <h3>Step 5: Master Null Safety</h3>
+        <p>Kotlin’s null safety prevents null pointer exceptions. Variables are non-null by default; use `?` for nullable types.</p>
+        <pre><code class="language-kotlin">fun main() {
+    val name: String = "Midway" // Non-null
+    // val name: String = null // Error: Null cannot be a value of a non-null type
+
+    var nullableName: String? = null // Nullable
+    println(nullableName?.length) // Safe call: Outputs null if nullableName is null
+    println(nullableName ?: "Unknown") // Elvis operator: Default value if null
+
+    nullableName = "Android"
+    println(nullableName!!.length) // Non-null assertion (use cautiously)
+}
+</code></pre>
+        <p><strong>Tools:</strong> `?.` (safe call), `?:` (Elvis operator), `!!` (non-null assertion). These features make Kotlin safer than Java.</p>
+      </section>
+
+      <section class="post-section" aria-label="Control Flow">
+        <h3>Step 6: Use Control Flow</h3>
+        <p>Kotlin’s control flow (if, when, loops) is expressive. Example:</p>
+        <pre><code class="language-kotlin">fun main() {
+    val score = 85
+    val grade = when (score) {
+        in 90..100 -> "A"
+        in 80..89 -> "B"
+        else -> "C"
+    }
+    println("Score: $score, Grade: $grade")
+
+    for (i in 1..3) {
+        println("Loop $i")
+    }
+}
+</code></pre>
+        <p>The `when` expression is like a switch statement but more powerful. Loops support ranges (e.g., `1..3`).</p>
+      </section>
+
+      <section class="post-section" aria-label="Best Practices">
+        <h3>Best Practices for Kotlin</h3>
+        <ul>
+          <li><strong>Prefer `val` over `var`:</strong> Immutable variables are safer.</li>
+          <li><strong>Use Null Safety:</strong> Avoid `!!` unless certain the value is non-null.</li>
+          <li><strong>Leverage Extensions:</strong> Add functionality to classes (e.g., `fun String.addExclamation() = "$this!"`).</li>
+          <li><strong>Keep Code Concise:</strong> Use Kotlin’s features like default parameters and single-expression functions.</li>
+          <li><strong>Test in REPL:</strong> Use Android Studio’s Kotlin REPL for quick prototyping.</li>
+        </ul>
+      </section>
+
+      <section class="post-section" aria-label="Troubleshooting">
+        <h3>Troubleshooting Common Issues</h3>
+        <ul>
+          <li><strong>Null Errors:</strong> Check for `null` using `?.` or `?:` instead of `!!`.</li>
+          <li><strong>Build Fails:</strong> Ensure Kotlin plugin and Gradle are up-to-date in Android Studio.</li>
+          <li><strong>Syntax Errors:</strong> Use Android Studio’s code completion and error highlighting.</li>
+        </ul>
+        <p>Refer to Kotlin’s official docs or <a href="../contact.html">contact us</a> for help.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>You’ve learned Kotlin basics for Android development, from variables to null safety. Practice by building a simple app with user input (see our <a href="../posts/android-first-app.html">First Android App</a> tutorial). Explore more in our <a href="../android.html">Android Development</a> section, like <a href="../posts/android-ui-design.html">UI Design Principles</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/android-ui-design.html" class="cta-button">Next: Learn UI Design</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
+  </footer>
+</body>
+</html>

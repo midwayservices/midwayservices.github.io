@@ -3,37 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Build Your First Android App</title>
+  <meta name="description" content="Step-by-step guide to building your first Android app using Android Studio and Kotlin. Learn installation, project creation, running on emulator, and customization with Jetpack Compose. Perfect for beginners at Midway Learning.">
+  <meta name="keywords" content="android development, first android app, android studio, kotlin, jetpack compose, hello world app, mobile development tutorial">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Build Your First Android App - Midway Learning</title>
   <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 <body>
   <header>
-    <h1>My Dev Blog</h1>
-    <nav>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
       <a href="../index.html">Home</a>
-      <a href="../webdev.html">Web Dev</a>
-      <a href="../android.html">Android</a>
-      <a href="../about.html">About</a>
+      <a href="../webdev.html">Web Development</a>
+      <a href="../android.html" class="active">Android Development</a>
+      <a href="../about.html">About Us</a>
       <a href="../contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <h2>Build Your First Android App</h2>
-    <p>Android development is fun and rewarding. Let’s build a simple “Hello World” app.</p>
+    <article class="post">
+      <header class="post-header">
+        <h2>Build Your First Android App: A Beginner's Guide</h2>
+        <p class="meta">Published: September 5, 2025 | 10 min read</p>
+        <p>Android development is an exciting journey that opens doors to creating mobile apps used by millions worldwide. In this tutorial, we'll walk you through building your very first "Hello World" Android app using Android Studio, Kotlin, and Jetpack Compose. Whether you're a student, hobbyist, or aspiring developer, this step-by-step guide will get you up and running quickly. No prior experience is required!</p>
+      </header>
 
-    <h3>Step 1: Install Android Studio</h3>
-    <p>Download Android Studio from Google’s official site and install it.</p>
+      <section class="post-section" aria-label="Prerequisites">
+        <h3>Prerequisites</h3>
+        <p>Before diving in, ensure your computer meets the minimum requirements for Android Studio (as of September 2025):</p>
+        <ul>
+          <li><strong>OS:</strong> Windows 10 (64-bit), macOS 12+, or Linux (64-bit with glibc 2.31+).</li>
+          <li><strong>RAM:</strong> At least 8 GB (16 GB recommended for emulator).</li>
+          <li><strong>Disk Space:</strong> 8 GB for Studio + 16 GB for emulator and SDK.</li>
+          <li><strong>CPU:</strong> Intel i5 (8th Gen+) or AMD Ryzen, with virtualization enabled (VT-x/AMD-V).</li>
+          <li><strong>Internet:</strong> Required for downloading Android Studio and SDK components.</li>
+        </ul>
+        <p>If your hardware is older, consider using a cloud-based IDE like GitHub Codespaces for Android development.</p>
+      </section>
 
-    <h3>Step 2: Create a New Project</h3>
-    <p>Choose “Empty Activity” and give your app a name. Select Kotlin as the language.</p>
+      <section class="post-section" aria-label="Installing Android Studio">
+        <h3>Step 1: Install Android Studio</h3>
+        <p>Android Studio is the official IDE for Android development, providing tools for coding, debugging, and testing. Download the latest version (Android Studio Koala or later as of 2025) from the official site.</p>
+        
+        <h4>Download and Install on Windows</h4>
+        <ol>
+          <li>Visit <a href="https://developer.android.com/studio" target="_blank" rel="noopener">developer.android.com/studio</a> and download the .exe installer.</li>
+          <li>Run the installer and follow the wizard: Accept the license, choose Standard installation, and let it download the SDK.</li>
+          <li>Launch Android Studio from the Start menu.</li>
+        </ol>
+        <p><em>Tip:</em> Enable hardware acceleration in BIOS for better emulator performance.</p>
+        
+        <!--<img src="android-studio-install-windows.png" alt="Android Studio installation on Windows" class="post-image">-->
+        
+        <h4>Download and Install on macOS</h4>
+        <ol>
+          <li>Download the .dmg file from the official site.</li>
+          <li>Open the DMG and drag Android Studio to the Applications folder.</li>
+          <li>Launch from Applications and complete the Setup Wizard, which downloads the SDK.</li>
+        </ol>
+        
+        <h4>Download and Install on Linux</h4>
+        <ol>
+          <li>Download the .tar.gz archive.</li>
+          <li>Extract to /opt/ or your preferred location.</li>
+          <li>Run bin/studio.sh and follow the Setup Wizard.</li>
+        </ol>
+        <p>During the initial setup, Android Studio will download the Android SDK, emulator images, and other components (about 2-3 GB). This may take time depending on your internet speed.</p>
+      </section>
 
-    <h3>Step 3: Run on Emulator</h3>
-    <p>Press the green run button ▶️ and your app will open in the emulator with “Hello World”.</p>
+      <section class="post-section" aria-label="Creating a New Project">
+        <h3>Step 2: Create a New Project</h3>
+        <p>Now, let's create your first app project. Android Studio uses Kotlin by default for new projects, and we'll use Jetpack Compose for the UI, which is the modern way to build Android interfaces.</p>
+        <ol>
+          <li>Open Android Studio and click "New Project" on the welcome screen.</li>
+          <li>Select "Empty Activity" or "Empty Compose Activity" template (Compose is recommended for new apps).</li>
+          <li>Configure your project:
+            <ul>
+              <li><strong>Name:</strong> HelloWorldApp</li>
+              <li><strong>Package name:</strong> com.example.helloworld (auto-generated)</li>
+              <li><strong>Save location:</strong> Choose a folder on your computer.</li>
+              <li><strong>Language:</strong> Kotlin</li>
+              <li><strong>Minimum SDK:</strong> API 24 (Android 7.0) or higher for broad compatibility.</li>
+            </ul>
+          </li>
+          <li>Click "Finish" to create the project. Android Studio will sync with Gradle and build the initial files.</li>
+        </ol>
+        <p>Your project structure will include folders like app/src/main/java for Kotlin code, res for resources, and build.gradle for dependencies.</p>
+        
+        <!--<img src="new-project-wizard.png" alt="New Project Wizard in Android Studio" class="post-image">-->
+      </section>
+
+      <section class="post-section" aria-label="Exploring the Code">
+        <h3>Step 3: Explore and Customize the Code</h3>
+        <p>The default project generates a simple "Hello World" screen using Jetpack Compose. Open app/src/main/java/.../MainActivity.kt to see the code.</p>
+        
+        <pre><code class="language-kotlin">// MainActivity.kt
+package com.example.helloworld
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.helloworld.ui.theme.HelloWorldTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            HelloWorldTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting("Android")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    HelloWorldTheme {
+        Greeting("Android")
+    }
+}
+</code></pre>
+        
+        <p>To customize, change the text in the Greeting function, e.g., to "Hello, Midway Learning!" Rebuild the project by clicking the hammer icon.</p>
+        
+        <p><em>Tip:</em> Use the Preview pane in Android Studio to see UI changes without running the app.</p>
+      </section>
+
+      <section class="post-section" aria-label="Running the App">
+        <h3>Step 4: Run Your App on an Emulator</h3>
+        <p>Test your app on a virtual device (emulator) or physical Android device.</p>
+        <ol>
+          <li>Create an Android Virtual Device (AVD): Go to Tools > Device Manager > Create Device. Choose a phone (e.g., Pixel 6), select a system image (API 34+), and finish.</li>
+          <li>Select the AVD from the device dropdown in the toolbar.</li>
+          <li>Click the green "Run" button (▶️) or Shift + F10.</li>
+          <li>The emulator launches, and your app installs and runs, displaying "Hello Android!".</li>
+        </ol>
+
+       <!--<img src="running-emulator.png" alt="Running the app on Android Emulator" class="post-image">-->
+
+        <p>To run on a physical device: Enable USB debugging in Developer Options, connect via USB, and select the device.</p>
+      </section>
+
+      <section class="post-section" aria-label="Troubleshooting Common Issues">
+        <h3>Troubleshooting Common Issues</h3>
+        <ul>
+          <li><strong>Emulator won't start:</strong> Ensure HAXM (Windows/macOS) or KVM (Linux) is installed and virtualization is enabled.</li>
+          <li><strong>Build errors:</strong> Check internet for Gradle sync; clean/rebuild project (Build > Clean Project).</li>
+          <li><strong>Slow performance:</strong> Use a physical device or upgrade hardware; enable GPU acceleration.</li>
+          <li><strong>SDK not found:</strong> Go to SDK Manager (Tools > SDK Manager) and install missing components.</li>
+        </ul>
+        <p>If issues persist, check the official Android documentation or forums like Stack Overflow.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>Congratulations! You've built and run your first Android app. This is just the beginning—next, explore adding buttons, lists, or integrating Firebase. Practice by modifying the app, like adding a button that changes the text.</p>
+        <p>For more tutorials, check our <a href="../android.html">Android Development</a> section. Have questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/kotlin-basics.html" class="cta-button">Next: Learn Kotlin Basics</a>
+      </section>
+    </article>
   </main>
 
   <footer>
-    <p>© 2025 My Dev Blog</p>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
   </footer>
 </body>
 </html>

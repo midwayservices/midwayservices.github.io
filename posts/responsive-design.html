@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn responsive web design to create websites that adapt to desktops, tablets, and phones. This beginner-friendly tutorial from Midway Learning covers media queries, flexible layouts, and best practices.">
+  <meta name="keywords" content="responsive web design, css media queries, flexible layouts, mobile-first design, web development, midway learning, css tutorial">
+  <meta name="author" content="Midway Learning">
+  <meta name="robots" content="index, follow">
+  <title>Responsive Web Design: Build Adaptive Websites - Midway Learning</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+  <header>
+    <h1>Midway Learning</h1>
+    <p class="tagline">Your Journey to Mastering Web and Android Development</p>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../webdev.html" class="active" aria-current="page">Web Development</a>
+      <a href="../android.html">Android Development</a>
+      <a href="../about.html">About Us</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h2>Responsive Web Design: Build Websites for All Devices</h2>
+        <p class="meta">Published: August 20, 2025 | 12 min read</p>
+        <p>Responsive web design ensures your website looks great and functions well on desktops, tablets, and phones. By using flexible layouts, fluid images, and CSS media queries, you can create adaptive user experiences. In this beginner-friendly tutorial, we’ll cover the principles of responsive design, practical examples, and best practices to help you build modern, accessible websites.</p>
+      </header>
+
+      <section class="post-section" aria-label="Why Responsive Design Matters">
+        <h3>Why Responsive Design Matters</h3>
+        <p>With over 50% of web traffic coming from mobile devices in 2025, responsive design is essential for user engagement and SEO. Google prioritizes mobile-friendly sites in search rankings, making it critical for visibility. Benefits include:</p>
+        <ul>
+          <li><strong>Universal Compatibility:</strong> Adapts to any screen size, from phones to large monitors.</li>
+          <li><strong>Improved UX:</strong> Ensures content is readable and navigable across devices.</li>
+          <li><strong>SEO Boost:</strong> Google’s mobile-first indexing favors responsive sites.</li>
+          <li><strong>Cost Efficiency:</strong> One site for all devices, reducing maintenance.</li>
+        </ul>
+        <p>This tutorial assumes basic HTML/CSS knowledge (see our <a href="../posts/html-css-basics.html">HTML & CSS Basics</a>). Let’s dive in!</p>
+        <!-- <img src="responsive-design-example.png" alt="Website displayed on desktop, tablet, and phone" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Setting Up Your Environment">
+        <h3>Step 1: Set Up Your Environment</h3>
+        <p>You need a text editor and browser to start:</p>
+        <ul>
+          <li><strong>Text Editor:</strong> Visual Studio Code with extensions like Live Server.</li>
+          <li><strong>Browser:</strong> Chrome or Firefox for responsive testing via Developer Tools (F12 > Toggle Device Toolbar).</li>
+        </ul>
+        <p>Create a project folder (e.g., `responsive-site`) with `index.html` and `style.css`. Link them with `<link rel="stylesheet" href="style.css">`.</p>
+      </section>
+
+      <section class="post-section" aria-label="Building a Responsive Layout">
+        <h3>Step 2: Create a Responsive HTML Structure</h3>
+        <p>Start with a semantic HTML structure that’s flexible for all devices:</p>
+        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Responsive Webpage&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;My Responsive Site&lt;/h1&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section class="hero"&gt;
+      &lt;h2&gt;Welcome to Midway Learning&lt;/h2&gt;
+      &lt;p&gt;Learn to build responsive websites!&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section class="content"&gt;
+      &lt;article class="card"&gt;
+        &lt;h3&gt;Card 1&lt;/h3&gt;
+        &lt;p&gt;Content for the first card.&lt;/p&gt;
+      &lt;/article&gt;
+      &lt;article class="card"&gt;
+        &lt;h3&gt;Card 2&lt;/h3&gt;
+        &lt;p&gt;Content for the second card.&lt;/p&gt;
+      &lt;/article&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;© 2025 Midway Learning&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        <p>The `<meta name="viewport">` tag ensures proper scaling on mobile devices. Semantic tags (`header`, `main`, `section`, `article`) improve accessibility and SEO.</p>
+        <!-- <img src="responsive-html-structure.png" alt="Browser preview of responsive HTML structure" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Flexible Layouts with CSS">
+        <h3>Step 3: Use Flexible Layouts with CSS</h3>
+        <p>Create flexible layouts using relative units (`%`, `vw`, `rem`, `em`) and CSS Grid or Flexbox. Here’s a responsive design for the above HTML:</p>
+        <pre><code class="language-css">body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f9;
+  color: #333;
+}
+
+header {
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem;
+  background: #e0f7fa;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1a1a1a;
+  color: #fff;
+}
+</code></pre>
+        <p>This CSS uses CSS Grid with `auto-fit` to create a responsive card layout that adjusts to screen size. Add `<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">` to your HTML `<head>` for the Roboto font.</p>
+        <!-- <img src="responsive-grid-example.png" alt="Browser showing responsive card layout with CSS Grid" class="post-image"> -->
+      </section>
+
+      <section class="post-section" aria-label="Media Queries">
+        <h3>Step 4: Apply CSS Media Queries</h3>
+        <p>Media queries adjust styles based on device characteristics like screen width. Example:</p>
+        <pre><code class="language-css">@media (max-width: 768px) {
+  .hero {
+    padding: 1rem;
+  }
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+  .content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .card {
+    padding: 0.5rem;
+  }
+}
+</code></pre>
+        <p>This adjusts padding, font sizes, and grid columns for tablets and phones. Test using Chrome DevTools (F12 > Toggle Device Toolbar).</p>
+      </section>
+
+      <section class="post-section" aria-label="Fluid Images">
+        <h3>Step 5: Make Images Responsive</h3>
+        <p>Ensure images scale with the layout using CSS:</p>
+        <pre><code class="language-css">img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+</code></pre>
+        <p>Add this to `style.css`. Use `<img src="example.jpg" alt="Descriptive alt text">` in HTML to include images. Optimize images (<100KB) for performance.</p>
+      </section>
+
+      <section class="post-section" aria-label="Mobile-First Design">
+        <h3>Step 6: Adopt Mobile-First Design</h3>
+        <p>Start with a base style for small screens, then enhance for larger screens:</p>
+        <pre><code class="language-css">/* Base styles for mobile */
+body {
+  font-size: 16px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Enhance for larger screens */
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .card {
+    flex: 1 1 300px;
+  }
+}
+</code></pre>
+        <p>Mobile-first reduces complexity and improves performance on smaller devices.</p>
+      </section>
+
+      <section class="post-section" aria-label="Best Practices">
+        <h3>Best Practices for Responsive Design</h3>
+        <ul>
+          <li><strong>Use Relative Units:</strong> Prefer `%`, `vw`, `vh`, `rem`, `em` over `px` for scalability.</li>
+          <li><strong>Test Extensively:</strong> Use emulators, real devices, or tools like BrowserStack.</li>
+          <li><strong>Prioritize Accessibility:</strong> Ensure high contrast, readable fonts, and ARIA attributes (e.g., `aria-label`).</li>
+          <li><strong>Optimize Performance:</strong> Minify CSS, compress images, and avoid heavy layouts.</li>
+          <li><strong>Use Modern CSS:</strong> Leverage Grid, Flexbox, and CSS variables for flexibility.</li>
+        </ul>
+        <p>Test with Lighthouse (Chrome DevTools) for accessibility and performance scores.</p>
+      </section>
+
+      <section class="post-section" aria-label="Troubleshooting">
+        <h3>Troubleshooting Common Issues</h3>
+        <ul>
+          <li><strong>Layout Breaks:</strong> Check for fixed widths; use relative units.</li>
+          <li><strong>Media Queries Not Applying:</strong> Ensure viewport meta tag is present.</li>
+          <li><strong>Images Distorted:</strong> Use `max-width: 100%` and `height: auto`.</li>
+        </ul>
+        <p>Debug with Chrome DevTools or <a href="../contact.html">contact us</a> for help.</p>
+      </section>
+
+      <section class="post-section" aria-label="Conclusion">
+        <h3>Conclusion</h3>
+        <p>You’ve learned the essentials of responsive web design—flexible layouts, media queries, and mobile-first principles. Practice by building a portfolio site or blog. Explore our <a href="../webdev.html">Web Development</a> tutorials, like <a href="../posts/javascript-intro.html">Introduction to JavaScript</a> or <a href="../posts/react-basics.html">React Basics</a>. Questions? <a href="../contact.html">Contact us</a>!</p>
+        <a href="../posts/react-basics.html" class="cta-button">Next: Learn React Basics</a>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>© 2025 Midway Learning | <a href="../privacy.html">Privacy Policy</a> | <a href="../contact.html">Contact Us</a></p>
+
+  </footer>
+</body>
+</html>
